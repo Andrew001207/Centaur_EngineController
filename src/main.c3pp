@@ -1,0 +1,31 @@
+#include "mbed.h"
+#include <spd_sensor.h>
+#include <configurations.h>
+
+//FIRST A12, A11
+//Second A15, B3
+Ticker t;
+uint8_t i = 0; 
+DigitalOut led(LED1);
+Serial pc(PB_10, PB_11, 115200);
+  // Spd_sensor sensor(PA_15, PB_3, 1.0);
+Spd_sensor sensor(PA_11, PA_12, 1.0);
+
+void Tcount()
+{
+    led = !led;
+    i++;
+    pc.printf("%u - %f\r\n", i, sensor.getValue());
+}
+ 
+int main() {
+    
+    t.attach(&Tcount, 0.1);
+    // while (true) {
+    //     if (M1A != led)
+    //         {
+    //             led = M1A;
+    //             value+=1;
+    //         }
+    // }
+}

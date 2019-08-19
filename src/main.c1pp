@@ -1,0 +1,24 @@
+#include <mbed.h>
+#include <dc_engine.h>
+#include <pwr_ctrl.h>
+#include <configurations.h>
+DigitalOut led(PC_13);
+
+//DCV_meas line_12V(PA_0, 10);
+DC_engine eng_l(SPEEDPIN_A , MOTORSHIELD_IN1, MOTORSHIELD_IN2);
+DC_engine eng_r(SPEEDPIN_B, MOTORSHIELD_IN3, MOTORSHIELD_IN4);
+
+int main() {
+    
+  while(1) {
+    //led = line_12V >= 5.0;
+    // led = !led;
+    // eng_l = 0.1f;
+    eng_l.write(0.5);
+    eng_r.write(0.5);
+    //  wait_ms(1000);
+    // eng_l.write(-0.0);
+    // eng_r.write(-0.0);
+    //   wait_ms(1000);
+  }
+}
